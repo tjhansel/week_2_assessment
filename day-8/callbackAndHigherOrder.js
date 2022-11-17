@@ -6,16 +6,19 @@
 */
 
 // CODE HERE
-const multiply=()=> (num, num, )
+// multiply = (num1, num2, callBack)=> callBack(num1 * num2)
+function multiply (num1,num2, callBack){
+  return callBack(num1*num2)
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
-
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) //should console.log 12
+})
+console.log("============")
 
 
 ////////// PROBLEMS 2 - 6 //////////
@@ -36,16 +39,18 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+first = (names, cbFunc) =>{
+  cbFunc(names[0])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
-
+first(names, firstName => {
+  console.log('The first name in names is ' + firstName)
+})
+console.log("=============")
 
 
 ////////// PROBLEM 3 //////////
@@ -56,20 +61,22 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+last = (names, cbFunc)=>{
+  cbFunc(names[names.length -1])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+})
 
 
 
 ////////// PROBLEM 4 //////////
-
+console.log("=============")
 /*
   Write a function called contains that takes in three parameters: an array, a name and a callback.  
   Check if the name exists in the array. 
@@ -78,24 +85,31 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+contains =(arr, name, cbFunc)=>{
+  for(i=0; i<=arr.length; i++){
+    if(name === arr[i]){cbFunc(true) 
+      return 
+    }
+  }cbFunc(false)
+  
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
 ////////// PROBLEM 5 //////////
-
+console.log("=============")
 /*
   Write a function called uniq that takes in an array and a callback function.
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
@@ -103,7 +117,16 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+function uniq(array, cbFunc){
+  for(i=0; i<array.length; i++){
+    for(j=i+1; j<array.length; j++){
+    if (array[i] === array[j]){
+      array.splice(j,1)
+      j--
+    }
+    }
+  }cbFunc(array)
+} 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -112,7 +135,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+uniq(names,uniArr=>{
+  console.log(`The new names array with all the duplicate items removed is ${uniArr}`)
+})
 
 
 ////////// PROBLEM 6 //////////
@@ -123,8 +148,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
-
+const each=(array,cbFunc)=>{
+  array.forEach((element,i) => cbFunc(element, i))
+}
 /*
   Invoke the each function, passing in the names array and a callback function.
   The callback function should take in two parameters, item and index.
@@ -133,10 +159,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+each(names, (item, index) => `The item at index ${index} is ${item}.`)
 
 ////////// PROBLEM 7 //////////
-
+console.log("=============7")
 /*
   Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
   When the correct user object is found, invoke the callback with the user object as an argument.
@@ -164,17 +190,24 @@ var users = [
   },
 ]
 // Do not edit the code above.
-
+// Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
+// When the correct user object is found, invoke the callback with the user object as an argument.
 // CODE HERE 
-
+const getUserById = (users, id, cbFunc) => {
+  for(i=0; i<users.length; i++){
+    if(users[i].id === id){
+      return cbFunc(users[i])
+    }
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+})
 
 ////////// CHALLENGE //////////
 
