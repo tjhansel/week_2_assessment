@@ -31,9 +31,31 @@
 */
 
 //CODE HERE
+class Pizza{
+    constructor(name,price,category,popularity,rating,tags){
+        this.name=name;
+        this.price=price;
+        this.category=category;
+        this.popularity=popularity;
+        this.category=category;
+        this.rating=rating;
+        this.tags=tags;
+    }
+    printPop=()=>{
+        return console.log(`${this.name} has a popularity of ${this.popularity} out of 10`)
+        };
+    printTag=()=>{
+        return console.log()
+    }
+}
+let pizza1 = new Pizza(`Hawaiian`,12,`Special`,9,4,[`kids`,`favorite`,`pinapple`,`ham`,])
+let pizza2 = new Pizza(`The White`,15,`Special`,8,5,[`adults`,`favorite`,`white sauce`,`sausage`,`mushroom`])
+let pizza3 = new Pizza(`Pepperoni`,10,`Classic`,10,8,[`kids`,`value`,`pepperoni`,`cheese`])
+let pizza4 = new Pizza(`Cheese`,8,`Classic`,10,9,[`kids`,`adults`,`value`,`cheese`])   
 
+const pizzaMenu = [pizza1,pizza2,pizza3,pizza4]
 
-
+//console.log(pizzaMenu)
 //////////////////PROBLEM 2////////////////////
 /* 
     Let's print a few values from our pizza object.
@@ -43,8 +65,10 @@
 */
 
 //CODE HERE
-
-
+pizza1.printPop()
+pizza2.printPop()
+pizza3.printPop()
+pizza4.printPop()
 /*
     Second, log the second tag in your pizza's
     tags array.
