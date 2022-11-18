@@ -34,12 +34,10 @@ const cart = [
 ]
 
 //CODE HERE
-const initialValue = 0;
-const sumWithInitial = cart.reduce(
-  (accumulator, currentValue) => accumulator + currentValue,
-  initialValue
-); console.log(cart.reduce)
-const summedPrice = cart.reduce(/* CALLBACK HERE */)
+
+cart.forEach((elem, i) => console.log(`${elem} is at index ${i}`))
+
+//const summedPrice = cart.reduce(/* CALLBACK HERE */)
 
 
 //////////////////PROBLEM 2////////////////////
